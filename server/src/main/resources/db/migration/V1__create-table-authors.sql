@@ -6,6 +6,4 @@ CREATE TABLE authors (
     deathdate DATE,
 
     PRIMARY KEY(id)
-)
-
-;
+);

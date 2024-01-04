@@ -13,6 +13,8 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
+
+// PODE SER NECESSARIO INCLUIR A ANOTACAO DE ENTITY
 @Table(name = "bookinstances")
 @AllArgsConstructor
 @NoArgsConstructor
