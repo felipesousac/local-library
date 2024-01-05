@@ -1,35 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Outlet } from "react-router-dom";
+import "./styles/App.css";
+import "./styles/main.css";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="container flex">
+      <div className="flex flex-row text-[#ffffffde]">
+        <div className="border-r min-h-screen bg-[#242424]">
+          <ul className="mt-2 pb-2 px-2">
+            <li>
+              <a href="/catalog">Home</a>
+            </li>
+            <li>
+              <a href="/catalog/books">All books</a>
+            </li>
+            <li>
+              <a href="/catalog/authors">All authors</a>
+            </li>
+            <li>
+              <a href="/catalog/genres">All genres</a>
+            </li>
+            <li className="mb-4">
+              <a href="/catalog/bookinstances">All book-instances</a>
+            </li>
+            <li>
+              <hr />
+            </li>
+            <li className="mt-4">
+              <a href="/catalog/author/create">Create new author</a>
+            </li>
+            <li>
+              <a href="/catalog/genre/create">Create new genre</a>
+            </li>
+            <li>
+              <a href="/catalog/book/create">Create new book</a>
+            </li>
+            <li>
+              <a href="/catalog/bookinstance/create">
+                Create new book instance (copy)
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div className="col-sm-10"></div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      <Outlet />
+    </div>
+  );
 }
 
-export default App
+export default App;
