@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import "./styles/App.css";
 import "./styles/main.css";
 
@@ -9,7 +9,7 @@ function App() {
         <div className="border-r min-h-screen bg-[#242424]">
           <ul className="mt-2 pb-2 px-2">
             <li>
-              <a href="/catalog">Home</a>
+              <Link to="/catalog">Home</Link>
             </li>
             <li>
               <a href="/catalog/books">All books</a>
