@@ -10,11 +10,4 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("catalog/book")
 public class BookController {
 
-    @Autowired
-    private BookRepository bookRepository;
-
-    @GetMapping("/count")
-    public long bookCount() {
-        return bookRepository.count();
-    }
 }

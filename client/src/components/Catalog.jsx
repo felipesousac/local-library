@@ -2,38 +2,17 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const Catalog = () => {
-  const [authorCount, setAuthorCount] = useState(0);
-  const [bookCount, setBookCount] = useState(0);
-  const [bookInstanceCount, setBookInstanceCount] = useState(0);
-  const [bookInstanceAvailableCount, setBookInstanceAvailableCount] =
-    useState(0);
-  const [genreCount, setGenreCount] = useState(0);
+  const [counts, setCounts] = useState({
+    author: "",
+    book: "",
+    bookInstance: "",
+    bookInstanceAvailable: "",
+    genre: "",
+  });
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/catalog/authors/count")
-      .then((response) => {
-        setAuthorCount(response.data);
-      });
-
-    axios.get("http://localhost:8080/catalog/book/count").then((response) => {
-      setBookCount(response.data);
-    });
-
-    axios
-      .get("http://localhost:8080/catalog/bookinstance/count")
-      .then((response) => {
-        setBookInstanceCount(response.data);
-      });
-
-    axios
-      .get("http://localhost:8080/catalog/bookinstance/count/available")
-      .then((response) => {
-        setBookInstanceAvailableCount(response.data);
-      });
-
-    axios.get("http://localhost:8080/catalog/genre/count").then((response) => {
-      setGenreCount(response.data);
+    axios.get("http://localhost:8080/catalog").then((response) => {
+      setCounts({ ...response.data });
     });
   }, []);
 
@@ -48,19 +27,19 @@ const Catalog = () => {
       <p>The library has the following record counts:</p>
       <ul className="list-disc ml-8">
         <li>
-          <strong>Books: {bookCount}</strong>
+          <strong>Books: {counts.book}</strong>
         </li>
         <li>
-          <strong>Copies: {bookInstanceCount}</strong>
+          <strong>Copies: {counts.bookInstance}</strong>
         </li>
         <li>
-          <strong>Copies available: {bookInstanceAvailableCount}</strong>
+          <strong>Copies available: {counts.bookInstanceAvailable}</strong>
         </li>
         <li>
-          <strong>Authors: {authorCount}</strong>
+          <strong>Authors: {counts.author}</strong>
         </li>
         <li>
-          <strong>Genres: {genreCount}</strong>
+          <strong>Genres: {counts.genre}</strong>
         </li>
       </ul>
     </div>

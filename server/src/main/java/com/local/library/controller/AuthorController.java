@@ -8,9 +8,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/catalog/authors")
 public class AuthorController {
 
-    @Autowired
-    private AuthorRepository authorRepository;
-
     @GetMapping
     public void authorList() {
     }
@@ -25,10 +22,5 @@ public class AuthorController {
 
     @DeleteMapping("")
     public void authorDeletePost() {
-    }
-
-    @GetMapping("/count")
-    public long authorCount() {
-        return authorRepository.count();
     }
 }

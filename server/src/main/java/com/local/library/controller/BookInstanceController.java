@@ -10,16 +10,4 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/catalog/bookinstance")
 public class BookInstanceController {
 
-    @Autowired
-    private BookInstanceRepository bookInstanceRepository;
-
-    @GetMapping("/count")
-    public long bookInstanceCount() {
-        return bookInstanceRepository.count();
-    }
-
-    @GetMapping("/count/available")
-    public long bookInstanceAvailableCount() {
-        return bookInstanceRepository.activeBookInstancesCount();
-    }
 }

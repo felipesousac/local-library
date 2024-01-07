@@ -9,11 +9,4 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/catalog/genre")
 public class GenreController {
-    @Autowired
-    private GenreRepository genreRepository;
-
-    @GetMapping("/count")
-    public long genreCount() {
-        return genreRepository.count();
-    }
 }
