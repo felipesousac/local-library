@@ -1,6 +1,7 @@
 package com.local.library.controller;
 
 import com.local.library.domain.AuthorRepository;
+import com.local.library.model.Author;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,8 +9,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/catalog/authors")
 public class AuthorController {
 
+    @Autowired
+    private AuthorRepository authorRepository;
+
     @GetMapping
-    public void authorList() {
+    public Iterable<Author> authorList() {
+        return authorRepository.findAll();
     }
 
     @GetMapping("/{id}")

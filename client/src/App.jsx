@@ -8,34 +8,34 @@ function App() {
       <div className="flex flex-row text-[#ffffffde]">
         <div className="border-r min-h-screen bg-[#242424]">
           <ul className="mt-2 pb-2 px-2">
-            <li>
+            <li className="hover:text-neutral-600">
               <Link to="/catalog">Home</Link>
             </li>
-            <li>
-              <a href="/catalog/books">All books</a>
+            <li className="hover:text-neutral-600">
+              <Link to="/catalog/books">All books</Link>
             </li>
-            <li>
+            <li className="hover:text-neutral-600">
               <a href="/catalog/authors">All authors</a>
             </li>
-            <li>
+            <li className="hover:text-neutral-600">
               <a href="/catalog/genres">All genres</a>
             </li>
-            <li className="mb-4">
+            <li className="mb-4 hover:text-neutral-600">
               <a href="/catalog/bookinstances">All book-instances</a>
             </li>
             <li>
               <hr />
             </li>
-            <li className="mt-4">
+            <li className="mt-4 hover:text-neutral-600">
               <a href="/catalog/author/create">Create new author</a>
             </li>
-            <li>
+            <li className="hover:text-neutral-600">
               <a href="/catalog/genre/create">Create new genre</a>
             </li>
-            <li>
+            <li className="hover:text-neutral-600">
               <a href="/catalog/book/create">Create new book</a>
             </li>
-            <li>
+            <li className="hover:text-neutral-600">
               <a href="/catalog/bookinstance/create">
                 Create new book instance (copy)
               </a>
