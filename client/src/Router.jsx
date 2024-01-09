@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import Catalog from "./components/Catalog";
 import BookList from "./components/BookList";
+import BookInstanceList from "./components/BookInstanceList";
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -16,6 +17,10 @@ const Router = () => {
         {
           path: "/catalog/books",
           element: <BookList />,
+        },
+        {
+          path: "/catalog/bookinstances",
+          element: <BookInstanceList />,
         },
       ],
     },

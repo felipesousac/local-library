@@ -7,8 +7,6 @@ import lombok.*;
 
 import java.time.LocalDate;
 
-
-// PODE SER NECESSARIO INCLUIR A ANOTACAO DE ENTITY
 @Table(name = "bookinstances")
 @Entity(name = "Bookinstance")
 @AllArgsConstructor
