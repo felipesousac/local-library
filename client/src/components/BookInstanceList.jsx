@@ -1,6 +1,21 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
+const handleStatus = (status) => {
+  switch (status) {
+    case "AVAILABLE":
+      return <span className="text-green-500">{status}</span>;
+    case "MAINTENANCE":
+      return <span className="text-red-500">{status}</span>;
+    case "LOANED":
+      return <span className="text-yellow-500">{status}</span>;
+    case "RESERVED":
+      return <span className="text-blue-500">{status}</span>;
+    default:
+      return <span>{status}</span>;
+  }
+};
+
 const BookInstanceList = () => {
   const [bookInstances, setBookInstances] = useState([]);
 
@@ -20,7 +35,8 @@ const BookInstanceList = () => {
               <li key={bookinstance[0].id} className="hover:text-neutral-600">
                 <a href={`/catalog/bookinstance/${bookinstance[0].id}`}>
                   <span className="font-semibold">{bookinstance[1]}</span> :{" "}
-                  {bookinstance[0].imprint} - {bookinstance[0].status}
+                  {bookinstance[0].imprint} -{" "}
+                  {handleStatus(bookinstance[0].status)}
                   {bookinstance[0].dueback
                     ? ` (Due: ${bookinstance[0].dueback})`
                     : ""}
