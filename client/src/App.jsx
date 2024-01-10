@@ -15,10 +15,10 @@ function App() {
               <Link to="/catalog/books">All books</Link>
             </li>
             <li className="hover:text-neutral-600">
-              <a href="/catalog/authors">All authors</a>
+              <Link to="/catalog/authors">All authors</Link>
             </li>
             <li className="hover:text-neutral-600">
-              <a href="/catalog/genres">All genres</a>
+              <Link to="/catalog/genres">All genres</Link>
             </li>
             <li className="mb-4 hover:text-neutral-600">
               <Link to="/catalog/bookinstances">All book-instances</Link>

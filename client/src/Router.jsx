@@ -4,6 +4,7 @@ import Catalog from "./components/Catalog";
 import BookList from "./components/BookList";
 import BookInstanceList from "./components/BookInstanceList";
 import AuthorList from "./components/AuthorList";
+import GenreList from "./components/GenreList";
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -26,6 +27,10 @@ const Router = () => {
         {
           path: "/catalog/authors",
           element: <AuthorList />,
+        },
+        {
+          path: "/catalog/genres",
+          element: <GenreList />,
         },
       ],
     },
