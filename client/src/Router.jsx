@@ -3,6 +3,7 @@ import App from "./App";
 import Catalog from "./components/Catalog";
 import BookList from "./components/BookList";
 import BookInstanceList from "./components/BookInstanceList";
+import AuthorList from "./components/AuthorList";
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -21,6 +22,10 @@ const Router = () => {
         {
           path: "/catalog/bookinstances",
           element: <BookInstanceList />,
+        },
+        {
+          path: "/catalog/authors",
+          element: <AuthorList />,
         },
       ],
     },

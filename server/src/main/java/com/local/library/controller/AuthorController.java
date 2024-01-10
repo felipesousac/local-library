@@ -14,7 +14,7 @@ public class AuthorController {
 
     @GetMapping
     public Iterable<Author> authorList() {
-        return authorRepository.findAll();
+        return authorRepository.findAllOrderByFamilyName();
     }
 
     @GetMapping("/{id}")

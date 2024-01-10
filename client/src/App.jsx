@@ -21,7 +21,7 @@ function App() {
               <a href="/catalog/genres">All genres</a>
             </li>
             <li className="mb-4 hover:text-neutral-600">
-              <a href="/catalog/bookinstances">All book-instances</a>
+              <Link to="/catalog/bookinstances">All book-instances</Link>
             </li>
             <li>
               <hr />

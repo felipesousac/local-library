@@ -11,8 +11,6 @@ const handleStatus = (status) => {
       return <span className="text-yellow-500">{status}</span>;
     case "RESERVED":
       return <span className="text-blue-500">{status}</span>;
-    default:
-      return <span>{status}</span>;
   }
 };
 
