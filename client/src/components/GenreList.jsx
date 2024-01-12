@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const GenreList = () => {
   const [genres, setGenres] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/catalog/genre").then((response) => {
+    axios.get("http://localhost:8080/catalog/genres").then((response) => {
       setGenres(response.data);
     });
   }, []);
@@ -18,7 +19,7 @@ const GenreList = () => {
           {genres.map((genre) => {
             return (
               <li key={genre.id} className="hover:text-neutral-600">
-                <a href={`/catalog/genre/${genre.id}`}>{genre.name}</a>
+                <Link to={`/catalog/genres/${genre.id}`}>{genre.name}</Link>
               </li>
             );
           })}
