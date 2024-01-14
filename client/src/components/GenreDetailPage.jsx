@@ -10,7 +10,7 @@ const GenreDetailPage = () => {
   useEffect(() => {
     axios.get(`http://localhost:8080/catalog/genres/${id}`).then((response) => {
       setBooksByGenre(response.data);
-      setTitle(response.data[0][1]);
+      setTitle(response.data[0][1].name);
     });
   }, []);
 

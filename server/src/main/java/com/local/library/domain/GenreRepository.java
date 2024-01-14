@@ -10,12 +10,6 @@ public interface GenreRepository extends JpaRepository<Genre, Long> {
     Iterable<Genre> findAllOrderByName();
 
 
-    @Query("select a, b.name from Book a join Genre b on a.genreid = b.id where a.genreid = :id")
+    @Query("select a, b from Book a join Genre b on a.genreid = b.id where a.genreid = :id")
     Iterable<Genre> findBooksByGenreId(Long id);
-
-//
-//    SELECT a.*, b.name
-//    FROM tbBooks AS a
-//    INNER JOIN tbGenres AS b ON a.genreId = b.id
-//    WHERE a.genreId = 4;
 }

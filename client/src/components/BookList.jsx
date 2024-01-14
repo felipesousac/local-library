@@ -20,7 +20,7 @@ const BookList = () => {
               <li key={book[0].id} className="hover:text-neutral-600">
                 <a href={`/catalog/book/${book[0].id}`}>
                   <span className="font-bold">{book[0].title}</span> by{" "}
-                  {book[2]}, {book[1]}
+                  {book[1].lastname}, {book[1].firstname}
                 </a>
               </li>
             );

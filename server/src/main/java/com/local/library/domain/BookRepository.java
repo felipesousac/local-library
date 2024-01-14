@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface BookRepository extends JpaRepository<Book, Long> {
 
-    @Query("select b, a.firstname, a.lastname from Book b inner join Author a on (b.authorid = a.id)")
+    @Query("select b, a from Book b inner join Author a on (b.authorid = a.id)")
     Iterable<Book> findBookAndAuthorById();
 }
