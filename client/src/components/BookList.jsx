@@ -5,7 +5,7 @@ const BookList = () => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/catalog/book").then((response) => {
+    axios.get("http://localhost:8080/catalog/books").then((response) => {
       setBooks(response.data);
     });
   }, []);

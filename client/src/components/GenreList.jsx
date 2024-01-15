@@ -7,7 +7,7 @@ const GenreList = () => {
 
   useEffect(() => {
     axios.get("http://localhost:8080/catalog/genres").then((response) => {
-      setGenres(response.data);
+      setGenres(response.data.content);
     });
   }, []);
 

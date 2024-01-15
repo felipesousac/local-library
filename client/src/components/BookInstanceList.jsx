@@ -18,9 +18,11 @@ const BookInstanceList = () => {
   const [bookInstances, setBookInstances] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/catalog/bookinstance").then((response) => {
-      setBookInstances(response.data);
-    });
+    axios
+      .get("http://localhost:8080/catalog/bookinstances")
+      .then((response) => {
+        setBookInstances(response.data);
+      });
   }, []);
 
   return (

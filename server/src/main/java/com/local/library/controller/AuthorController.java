@@ -3,6 +3,10 @@ package com.local.library.controller;
 import com.local.library.domain.AuthorRepository;
 import com.local.library.model.Author;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -13,19 +17,8 @@ public class AuthorController {
     private AuthorRepository authorRepository;
 
     @GetMapping
-    public Iterable<Author> authorList() {
-        return authorRepository.findAllOrderByFamilyName();
+    public ResponseEntity<Page<Author>> authorList(@PageableDefault(size = 15, sort = {"lastname"}) Pageable pagination) {
+        return ResponseEntity.ok(authorRepository.findAll(pagination));
     }
 
-    @GetMapping("/{id}")
-    public void authorDetail() {
-    }
-
-    @PostMapping("")
-    public void authorCreatePost() {
-    }
-
-    @DeleteMapping("")
-    public void authorDeletePost() {
-    }
 }

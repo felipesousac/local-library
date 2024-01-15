@@ -14,7 +14,7 @@ const AuthorList = () => {
 
   useEffect(() => {
     axios.get("http://localhost:8080/catalog/authors").then((response) => {
-      setAuthors(response.data);
+      setAuthors(response.data.content);
     });
   }, []);
 

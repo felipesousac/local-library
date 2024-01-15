@@ -5,6 +5,7 @@ import com.local.library.domain.BookInstanceRepository;
 import com.local.library.domain.BookRepository;
 import com.local.library.domain.GenreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,7 +29,7 @@ public class CatalogController {
     private GenreRepository genreRepository;
 
     @GetMapping
-    public Map<String, Long> counts() {
+    public ResponseEntity<Map<String, Long>> counts() {
         HashMap<String, Long> map = new HashMap<>();
         map.put("book", bookRepository.count());
         map.put("author", authorRepository.count());
@@ -36,6 +37,6 @@ public class CatalogController {
         map.put("bookInstanceAvailable", bookInstanceRepository.activeBookInstancesCount());
         map.put("genre", genreRepository.count());
 
-        return map;
+        return ResponseEntity.ok(map);
     }
 }
