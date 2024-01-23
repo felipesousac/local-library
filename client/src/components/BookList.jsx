@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const BookList = () => {
   const [books, setBooks] = useState([]);
@@ -18,10 +19,10 @@ const BookList = () => {
           {books.map((book) => {
             return (
               <li key={book[0].id} className="hover:text-neutral-600">
-                <a href={`/catalog/book/${book[0].id}`}>
+                <Link to={`/catalog/books/${book[0].id}`}>
                   <span className="font-bold">{book[0].title}</span> by{" "}
                   {book[1].lastname}, {book[1].firstname}
-                </a>
+                </Link>
               </li>
             );
           })}

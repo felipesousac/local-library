@@ -6,6 +6,7 @@ import BookInstanceList from "./components/BookInstanceList";
 import AuthorList from "./components/AuthorList";
 import GenreList from "./components/GenreList";
 import GenreDetailPage from "./components/GenreDetailPage";
+import BookDetailPage from "./components/BookDetailPage";
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -36,6 +37,10 @@ const Router = () => {
         {
           path: "/catalog/genres/:id",
           element: <GenreDetailPage />,
+        },
+        {
+          path: "/catalog/books/:id",
+          element: <BookDetailPage />,
         },
       ],
     },
