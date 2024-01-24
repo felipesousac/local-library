@@ -2,10 +2,12 @@ package com.local.library.dto;
 
 import com.local.library.model.Author;
 import com.local.library.model.Book;
+import com.local.library.model.BookInstance;
 import com.local.library.model.Genre;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.Optional;
 
 @NoArgsConstructor
@@ -21,9 +23,10 @@ public class BookDetail {
     private String isbn;
     private Long genreId;
     private String genreName;
+    private List<BookInstance> bookInstances;
 
 
-    public BookDetail(Book book, Author author, Genre genre) {
+    public BookDetail(Book book, Author author, Genre genre, List<BookInstance> bookInstance) {
         this.id = book.getId();
         this.title = book.getTitle();
         this.authorId = book.getAuthorid();
@@ -33,5 +36,6 @@ public class BookDetail {
         this.isbn = book.getIsbn();
         this.genreId = book.getGenreid();
         this.genreName = genre.getName();
+        this.bookInstances = bookInstance;
     }
 }

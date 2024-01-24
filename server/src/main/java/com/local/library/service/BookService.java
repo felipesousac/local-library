@@ -1,11 +1,13 @@
 package com.local.library.service;
 
 import com.local.library.domain.AuthorRepository;
+import com.local.library.domain.BookInstanceRepository;
 import com.local.library.domain.BookRepository;
 import com.local.library.domain.GenreRepository;
 import com.local.library.dto.BookDetail;
 import com.local.library.model.Author;
 import com.local.library.model.Book;
+import com.local.library.model.BookInstance;
 import com.local.library.model.Genre;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,11 +28,16 @@ public class BookService {
     @Autowired
     private GenreRepository genreRepository;
 
+    @Autowired
+    private BookInstanceRepository bookInstanceRepository;
+
     public ResponseEntity<BookDetail> bookDetailData(Long id) {
         Book book = bookRepository.getReferenceById(id);
         Author author = authorRepository.getReferenceById(book.getAuthorid());
         Genre genre = genreRepository.getReferenceById(book.getGenreid());
 
-        return ResponseEntity.ok(new BookDetail(book, author, genre));
+        List<BookInstance> bookInstances = bookInstanceRepository.findAllByBookId(id);
+
+        return ResponseEntity.ok(new BookDetail(book, author, genre, bookInstances));
     }
 }
