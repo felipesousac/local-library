@@ -1,6 +1,7 @@
 package com.local.library.domain;
 
 import com.local.library.model.Book;
+import com.local.library.model.BookInstance;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -13,4 +14,7 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     @Query("select a, b from Book a inner join Author b on (a.authorid = b.id) where (a.id = :id)")
     Iterable<Book> detailBookWithAuthorById(Long id);
+
+    @Query("select a from Book a where a.authorid = :id")
+    List<Book> findBooksByAuthorId(Long id);
 }
