@@ -16,7 +16,6 @@ const AuthorDetailPage = () => {
       });
   }, []);
 
-  // CONTINUE FROM HERE
   return (
     <>
       {isLoading ? (
@@ -52,7 +51,7 @@ const AuthorDetailPage = () => {
               </>
             ) : (
               <div className="text-red-500 font-semibold">
-                No copies of this book found in this library.
+                This author has no books in this library.
               </div>
             )}
           </div>
