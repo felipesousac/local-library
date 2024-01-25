@@ -5,6 +5,8 @@ const GenreForm = () => {
   const [name, setName] = useState("");
 
   const createGenre = async (e) => {
+    e.preventDefault();
+
     const headers = {
       headers: {
         "Content-Type": "application/json",
