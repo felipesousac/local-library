@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="container flex">
       <div className="flex flex-row text-[#ffffffde]">
-        <div className="border-r min-h-screen bg-[#242424]">
+        <div className="border-r min-h-screen min-w-64 bg-[#242424]">
           <ul className="mt-2 pb-2 px-2">
             <li className="hover:text-neutral-600">
               <Link to="/catalog">Home</Link>

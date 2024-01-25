@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface BookInstanceRepository extends JpaRepository<BookInstance, Long> {
 
-    @Query("select count(*) from Bookinstance WHERE status = 'ACTIVE'")
+    @Query("select count(*) from Bookinstance WHERE status = 'AVAILABLE'")
     long activeBookInstancesCount();
 
     @Query("select b, a from Bookinstance b inner join Book a on (b.bookid = a.id)")
