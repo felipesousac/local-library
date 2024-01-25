@@ -1,16 +1,29 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
+const capitalizeFirstLetter = (string) => {
+  const lower = string.toLowerCase();
+  return string.charAt(0).toUpperCase() + lower.slice(1);
+};
+
 const handleStatus = (status) => {
   switch (status) {
     case "AVAILABLE":
-      return <span className="text-green-500">{status}</span>;
+      return (
+        <span className="text-green-500">{capitalizeFirstLetter(status)}</span>
+      );
     case "MAINTENANCE":
-      return <span className="text-red-500">{status}</span>;
+      return (
+        <span className="text-red-500">{capitalizeFirstLetter(status)}</span>
+      );
     case "LOANED":
-      return <span className="text-yellow-500">{status}</span>;
+      return (
+        <span className="text-yellow-500">{capitalizeFirstLetter(status)}</span>
+      );
     case "RESERVED":
-      return <span className="text-blue-500">{status}</span>;
+      return (
+        <span className="text-blue-500">{capitalizeFirstLetter(status)}</span>
+      );
   }
 };
 
