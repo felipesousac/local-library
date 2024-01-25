@@ -1,14 +1,15 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
-import Catalog from "./components/Catalog";
-import BookList from "./components/BookList";
-import BookInstanceList from "./components/BookInstanceList";
-import AuthorList from "./components/AuthorList";
-import GenreList from "./components/GenreList";
-import GenreDetailPage from "./components/GenreDetailPage";
-import BookDetailPage from "./components/BookDetailPage";
-import AuthorDetailPage from "./components/AuthorDetailPage";
-import BookInstanceDetailPage from "./components/BookInstanceDetailPage";
+import Catalog from "./components/display/Catalog";
+import BookList from "./components/display/BookList";
+import BookInstanceList from "./components/display/BookInstanceList";
+import AuthorList from "./components/display/AuthorList";
+import GenreList from "./components/display/GenreList";
+import GenreDetailPage from "./components/display/GenreDetailPage";
+import BookDetailPage from "./components/display/BookDetailPage";
+import AuthorDetailPage from "./components/display/AuthorDetailPage";
+import BookInstanceDetailPage from "./components/display/BookInstanceDetailPage";
+import GenreForm from "./components/form/GenreForm";
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -39,6 +40,10 @@ const Router = () => {
         {
           path: "/catalog/genres/:id",
           element: <GenreDetailPage />,
+        },
+        {
+          path: "/catalog/genre/create",
+          element: <GenreForm />,
         },
         {
           path: "/catalog/books/:id",
