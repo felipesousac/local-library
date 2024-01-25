@@ -1,5 +1,6 @@
 package com.local.library.model;
 
+import com.local.library.dto.CreateGenreData;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -23,4 +24,8 @@ public class Genre {
     @NotBlank
     @Size(min = 3,max = 100)
     private String name;
+
+    public Genre(CreateGenreData data) {
+        this.name = data.name();
+    }
 }
