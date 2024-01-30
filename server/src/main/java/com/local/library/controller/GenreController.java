@@ -2,6 +2,7 @@ package com.local.library.controller;
 
 import com.local.library.domain.GenreRepository;
 import com.local.library.dto.CreateGenreData;
+import com.local.library.infra.exception.AlreadyCreatedException;
 import com.local.library.model.Genre;
 import com.local.library.service.GenreService;
 import jakarta.validation.Valid;
@@ -42,7 +43,7 @@ public class GenreController {
     }
 
     @PostMapping
-    private ResponseEntity createGenre(@RequestBody @Valid CreateGenreData data, UriComponentsBuilder uriBuilder) {
+    private ResponseEntity createGenre(@RequestBody @Valid CreateGenreData data, UriComponentsBuilder uriBuilder) throws AlreadyCreatedException {
         return genreService.createGenre(data, uriBuilder);
     }
 }

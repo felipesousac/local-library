@@ -8,4 +8,6 @@ public interface GenreRepository extends JpaRepository<Genre, Long> {
 
     @Query("select a, b from Book a join Genre b on a.genreid = b.id where a.genreid = :id")
     Iterable<Genre> findBooksByGenreId(Long id);
+
+    Genre findByName(String name);
 }

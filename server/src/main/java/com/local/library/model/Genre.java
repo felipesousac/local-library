@@ -26,6 +26,6 @@ public class Genre {
     private String name;
 
     public Genre(CreateGenreData data) {
-        this.name = data.name();
+        this.name = data.name().trim();
     }
 }
