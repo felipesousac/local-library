@@ -1,7 +1,14 @@
 package com.local.library.infra.exception;
 
+import lombok.Getter;
+
+@Getter
 public class AlreadyCreatedException extends Exception {
-    public AlreadyCreatedException(String errorMesage) {
-        super(errorMesage);
+
+    private final Long genreId;
+
+    public AlreadyCreatedException(String errorMessage, Long genreId) {
+        super(errorMessage);
+        this.genreId = genreId;
     }
 }
