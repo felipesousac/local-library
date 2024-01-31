@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { Snackbar, Alert, Slide } from "@mui/material";
+import { Snackbar, Alert } from "@mui/material";
 
 const GenreForm = () => {
   const [name, setName] = useState("");
@@ -30,7 +30,7 @@ const GenreForm = () => {
         setName("");
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.response.data);
       });
   };
 
@@ -43,9 +43,9 @@ const GenreForm = () => {
     <>
       <div className="pl-2">
         <h1 className="text-4xl mb-4">Create Genre</h1>
-        <form className="flex flex-col gap-3 " onSubmit={createGenre}>
+        <form className="flex flex-col gap-3" onSubmit={createGenre}>
           <input
-            className="border-2 border-gray-400 rounded p-2 focus:border-2 focus:border-blue-600"
+            className="border-2 border-gray-400 rounded p-2 focus:border-2 focus:border-blue-600 focus:outline-none "
             type="text"
             value={name}
             name="name"

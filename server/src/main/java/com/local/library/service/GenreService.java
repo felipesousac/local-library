@@ -23,7 +23,7 @@ public class GenreService {
         Genre checker = genreRepository.findByName(genre.getName());
 
         if (checker != null) {
-            throw new AlreadyCreatedException("The genre: " + genre.getName() + ", already exists");
+            throw new AlreadyCreatedException("The genre '" + genre.getName() + "' already exists");
         }
 
         genreRepository.save(genre);
