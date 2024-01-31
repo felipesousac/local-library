@@ -1,10 +1,18 @@
 import { useState } from "react";
 import axios from "axios";
 import { Snackbar, Alert } from "@mui/material";
+import { useForm } from "react-hook-form";
+import { ErrorMessage } from "@hookform/error-message";
 
 const GenreForm = () => {
   const [name, setName] = useState("");
   const [open, setOpen] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { isSubmitting, errors },
+  } = useForm();
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -14,9 +22,7 @@ const GenreForm = () => {
     setOpen(false);
   };
 
-  const createGenre = async (e) => {
-    e.preventDefault();
-
+  const createGenre = async () => {
     const headers = {
       headers: {
         "Content-Type": "application/json",
@@ -43,15 +49,33 @@ const GenreForm = () => {
     <>
       <div className="pl-2">
         <h1 className="text-4xl mb-4">Create Genre</h1>
-        <form className="flex flex-col gap-3" onSubmit={createGenre}>
+        <form
+          className="flex flex-col gap-3 max-w-52"
+          onSubmit={handleSubmit(createGenre)}
+        >
           <input
             className="border-2 border-gray-400 rounded p-2 focus:border-2 focus:border-blue-600 focus:outline-none "
             type="text"
             value={name}
-            name="name"
             placeholder="Enter genre name"
-            required
-            onChange={(e) => setName(e.target.value)}
+            {...register("name", {
+              onChange: (e) => {
+                setName(e.target.value);
+              },
+              pattern: {
+                value: /^[A-Za-z]+$/i,
+                message: "Name must be only letters",
+              },
+              required: { value: true, message: "Name is required" },
+              minLength: {
+                value: 3,
+                message: "Name must be at least 3 characters",
+              },
+              maxLength: {
+                value: 250,
+                message: "Name must be less than 250 characters",
+              },
+            })}
           />
           <button
             type="submit"
@@ -59,8 +83,12 @@ const GenreForm = () => {
           >
             Create
           </button>
+          {errors.name && (
+            <p className="text-red-500">* {errors.name.message}</p>
+          )}
         </form>
       </div>
+
       {open && (
         <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
           <Alert
