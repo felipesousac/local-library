@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 const GenreDetailPage = () => {
   const [booksByGenre, setBooksByGenre] = useState([]);
@@ -23,12 +23,12 @@ const GenreDetailPage = () => {
           {booksByGenre.map((book) => {
             return (
               <div key={book[0].id} className="mb-2">
-                <a
+                <Link
                   className=" text-blue-600 font-semibold hover:text-blue-800"
-                  href={`/catalog/book/${book[0].id}`}
+                  to={`/catalog/books/${book[0].id}`}
                 >
                   {book[0].title}
-                </a>
+                </Link>
                 <p className="max-w-lg">{book[0].summary}</p>
               </div>
             );

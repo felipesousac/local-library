@@ -42,7 +42,7 @@ const Router = () => {
           element: <GenreDetailPage />,
         },
         {
-          path: "/catalog/genre/create",
+          path: "/catalog/genres/create",
           element: <GenreForm />,
         },
         {
@@ -50,18 +50,14 @@ const Router = () => {
           element: <BookDetailPage />,
         },
         {
-          path: "/catalog/author/:id",
+          path: "/catalog/authors/:id",
           element: <AuthorDetailPage />,
         },
         {
-          path: "/catalog/bookinstance/:id",
+          path: "/catalog/bookinstances/:id",
           element: <BookInstanceDetailPage />,
         },
       ],
-    },
-    {
-      path: "/new",
-      element: <>Building</>,
     },
   ]);
 

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const capitalizeFirstLetter = (string) => {
   const lower = string.toLowerCase();
@@ -46,14 +47,14 @@ const BookInstanceList = () => {
           {bookInstances.map((bookinstance) => {
             return (
               <li key={bookinstance[0].id} className="hover:text-neutral-600">
-                <a href={`/catalog/bookinstance/${bookinstance[0].id}`}>
+                <Link to={`/catalog/bookinstances/${bookinstance[0].id}`}>
                   <span className="font-semibold">{bookinstance[1].title}</span>{" "}
                   : {bookinstance[0].imprint} -{" "}
                   {handleStatus(bookinstance[0].status)}
                   {bookinstance[0].dueback
                     ? ` (Due: ${bookinstance[0].dueback})`
                     : ""}
-                </a>
+                </Link>
               </li>
             );
           })}

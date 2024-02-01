@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const AuthorDetailPage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -37,12 +37,12 @@ const AuthorDetailPage = () => {
                   return (
                     <div key={book._id} className="ml-5">
                       <p className="pt-5">
-                        <a
-                          href={`/catalog/book/${book._id}`}
+                        <Link
+                          to={`/catalog/books/${book.id}`}
                           className="font-semibold text-xl text-blue-500"
                         >
                           {book.title}
-                        </a>
+                        </Link>
                       </p>
                       <p className="text-lg max-w-5xl">{book.summary}</p>
                     </div>

@@ -27,16 +27,16 @@ function App() {
               <hr />
             </li>
             <li className="mt-4 hover:text-neutral-600">
-              <a href="/catalog/author/create">Create new author</a>
+              <a href="/catalog/authors/create">Create new author</a>
             </li>
             <li className="hover:text-neutral-600">
-              <a href="/catalog/genre/create">Create new genre</a>
+              <a href="/catalog/genres/create">Create new genre</a>
             </li>
             <li className="hover:text-neutral-600">
-              <a href="/catalog/book/create">Create new book</a>
+              <a href="/catalog/books/create">Create new book</a>
             </li>
             <li className="hover:text-neutral-600">
-              <a href="/catalog/bookinstance/create">
+              <a href="/catalog/bookinstances/create">
                 Create new book instance (copy)
               </a>
             </li>

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const AuthorList = () => {
   const [authors, setAuthors] = useState([]);
@@ -26,13 +27,13 @@ const AuthorList = () => {
           {authors.map((author) => {
             return (
               <li key={author.id} className="hover:text-neutral-600">
-                <a href={`/catalog/author/${author.id}`}>
+                <Link to={`/catalog/authors/${author.id}`}>
                   <span className="font-semibold">
                     {author.lastname}, {author.firstname}
                   </span>
                   {handleBirth(author.birthdate)}
                   {handleDeath(author.deathdate)}
-                </a>
+                </Link>
               </li>
             );
           })}

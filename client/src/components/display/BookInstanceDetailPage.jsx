@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 const capitalizeFirstLetter = (string) => {
   const lower = string.toLowerCase();
@@ -52,12 +52,12 @@ const BookInstanceDetailPage = () => {
             <h1 className="text-4xl">ID: {bookInstance.id}</h1>
             <p>
               <span className="font-semibold">Title: </span>
-              <a
-                href={`/catalog/books/${bookInstance.bookId}`}
+              <Link
+                to={`/catalog/books/${bookInstance.bookId}`}
                 className="text-blue-500"
               >
                 {bookInstance.bookTitle}
-              </a>
+              </Link>
             </p>
             <p>
               <span className="font-semibold">Imprint: </span>

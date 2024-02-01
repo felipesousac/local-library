@@ -1,8 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
-import { Snackbar, Alert } from "@mui/material";
+import { Snackbar, Alert, Slide } from "@mui/material";
 import { useForm } from "react-hook-form";
-import { ErrorMessage } from "@hookform/error-message";
 
 const GenreForm = () => {
   const [name, setName] = useState("");
@@ -20,6 +19,10 @@ const GenreForm = () => {
     }
 
     setOpen(false);
+  };
+
+  const slideTransition = (props) => {
+    return <Slide {...props} direction="up" />;
   };
 
   const createGenre = async () => {
@@ -90,9 +93,15 @@ const GenreForm = () => {
       </div>
 
       {open && (
-        <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
+        <Snackbar
+          open={open}
+          autoHideDuration={2000}
+          onClose={handleClose}
+          TransitionComponent={slideTransition}
+        >
           <Alert
             onClose={handleClose}
+            TransitionComponent={slideTransition}
             severity="success"
             variant="filled"
             sx={{ width: "100%" }}

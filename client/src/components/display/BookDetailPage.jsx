@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 const handleStatus = (status) => {
   switch (status) {
@@ -30,7 +30,7 @@ const BookDetailPage = () => {
   return (
     <>
       {isLoading ? (
-        <div>Loading...</div>
+        <div className="pl-2">Loading...</div>
       ) : (
         <>
           <div className="pl-2">
@@ -38,7 +38,9 @@ const BookDetailPage = () => {
             <div className="flex mb-2">
               <p className="mr-2">
                 <span className="font-semibold">Author: </span>
-                <a href="">{`${book.authorLastName}, ${book.authorFirstName}`}</a>
+                <Link to={`/catalog/authors/${book.authorId}`}>
+                  <span className="text-blue-700 underline hover:text-blue-500">{`${book.authorLastName}, ${book.authorFirstName}`}</span>
+                </Link>
               </p>
             </div>
             <div className="flex mb-2">
@@ -61,8 +63,8 @@ const BookDetailPage = () => {
               <>
                 {book.bookInstances.map((bookinstance) => {
                   return (
-                    <>
-                      <div key={bookinstance.id} className="ml-5 mt-4">
+                    <div key={bookinstance.id}>
+                      <div className="ml-5 mt-4">
                         <p>{handleStatus(bookinstance.status)}</p>
                         <span className="font-semibold">Imprint: </span>
                         {bookinstance.imprint}
@@ -77,7 +79,7 @@ const BookDetailPage = () => {
                         <span className="font-semibold">Id: </span>
                         {bookinstance.id}
                       </div>
-                    </>
+                    </div>
                   );
                 })}
               </>
