@@ -1,29 +1,17 @@
 import { useState } from "react";
 import axios from "axios";
-import { Snackbar, Alert, Slide } from "@mui/material";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const GenreForm = () => {
   const [name, setName] = useState("");
-  const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   const {
     register,
     handleSubmit,
     formState: { isSubmitting, errors },
   } = useForm();
-
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-
-    setOpen(false);
-  };
-
-  const slideTransition = (props) => {
-    return <Slide {...props} direction="up" />;
-  };
 
   const createGenre = async () => {
     const headers = {
@@ -35,11 +23,10 @@ const GenreForm = () => {
     await axios
       .post("http://localhost:8080/catalog/genres", { name }, headers)
       .then((response) => {
-        setOpen(true);
-        setName("");
+        navigate(`/catalog/genres/${response.data.id}`);
       })
       .catch((error) => {
-        console.log(error.response.data);
+        navigate(`/catalog/genres/${error.response.data.genreId}`);
       });
   };
 
@@ -91,25 +78,6 @@ const GenreForm = () => {
           )}
         </form>
       </div>
-
-      {open && (
-        <Snackbar
-          open={open}
-          autoHideDuration={2000}
-          onClose={handleClose}
-          TransitionComponent={slideTransition}
-        >
-          <Alert
-            onClose={handleClose}
-            TransitionComponent={slideTransition}
-            severity="success"
-            variant="filled"
-            sx={{ width: "100%" }}
-          >
-            Genre created successfully!
-          </Alert>
-        </Snackbar>
-      )}
     </>
   );
 };
