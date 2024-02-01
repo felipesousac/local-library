@@ -33,8 +33,8 @@ public class GenreController {
     }
 
     @GetMapping("/{id}")
-    private ResponseEntity<Iterable<Genre>> genreDetail(@PathVariable Long id) {
-        return ResponseEntity.ok(genreRepository.findBooksByGenreId(id));
+    private ResponseEntity genreDetail(@PathVariable Long id) {
+        return ResponseEntity.ok(genreService.genreDetail(id));
     }
 
     @GetMapping("/detail/{id}")

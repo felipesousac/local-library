@@ -9,8 +9,8 @@ const GenreDetailPage = () => {
 
   useEffect(() => {
     axios.get(`http://localhost:8080/catalog/genres/${id}`).then((response) => {
-      setBooksByGenre(response.data);
-      setTitle(response.data[0][1].name);
+      setBooksByGenre(response.data.body.bookList);
+      setTitle(response.data.body.name);
     });
   }, []);
 
@@ -22,14 +22,14 @@ const GenreDetailPage = () => {
         <div className="list-disc ml-3">
           {booksByGenre.map((book) => {
             return (
-              <div key={book[0].id} className="mb-2">
+              <div key={book.id} className="mb-2">
                 <Link
                   className=" text-blue-600 font-semibold hover:text-blue-800"
-                  to={`/catalog/books/${book[0].id}`}
+                  to={`/catalog/books/${book.id}`}
                 >
-                  {book[0].title}
+                  {book.title}
                 </Link>
-                <p className="max-w-lg">{book[0].summary}</p>
+                <p className="max-w-lg">{book.summary}</p>
               </div>
             );
           })}

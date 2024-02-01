@@ -2,7 +2,9 @@ package com.local.library.service;
 
 import com.local.library.domain.GenreRepository;
 import com.local.library.dto.CreateGenreData;
+import com.local.library.dto.GenreDetail;
 import com.local.library.infra.exception.AlreadyCreatedException;
+import com.local.library.model.Book;
 import com.local.library.model.Genre;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 
 @Service
 public class GenreService {
@@ -32,4 +35,12 @@ public class GenreService {
 
         return ResponseEntity.created(uri).body(genre);
     }
+
+    public ResponseEntity genreDetail(Long id) {
+        Genre genre = genreRepository.getReferenceById(id);
+        List<Book> books = genreRepository.findBooksByGenreId(genre.getId());
+
+        return ResponseEntity.ok(new GenreDetail(genre, books));
+    }
+
 }
