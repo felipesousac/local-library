@@ -10,6 +10,7 @@ import BookDetailPage from "./components/display/BookDetailPage";
 import AuthorDetailPage from "./components/display/AuthorDetailPage";
 import BookInstanceDetailPage from "./components/display/BookInstanceDetailPage";
 import GenreForm from "./components/form/GenreForm";
+import AuthorForm from "./components/form/AuthorForm";
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -56,6 +57,10 @@ const Router = () => {
         {
           path: "/catalog/bookinstances/:id",
           element: <BookInstanceDetailPage />,
+        },
+        {
+          path: "/catalog/authors/create",
+          element: <AuthorForm />,
         },
       ],
     },

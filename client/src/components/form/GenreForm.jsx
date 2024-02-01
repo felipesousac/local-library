@@ -53,7 +53,7 @@ const GenreForm = () => {
                 setName(e.target.value);
               },
               pattern: {
-                value: /^[A-Za-z]+$/i,
+                value: /^([^0-9]*)$/,
                 message: "Name must be only letters",
               },
               required: { value: true, message: "Name is required" },
