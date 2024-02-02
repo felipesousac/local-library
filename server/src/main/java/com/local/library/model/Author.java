@@ -34,4 +34,14 @@ public class Author {
     private LocalDate birthdate;
 
     private LocalDate deathdate;
+
+    public Author(Author data) {
+        this.firstname = data.getFirstname().trim();
+        this.lastname = data.getLastname().trim();
+        this.birthdate = data.getBirthdate();
+
+        if (data.getDeathdate() != null) {
+            this.deathdate = data.getDeathdate();
+        }
+    }
 }

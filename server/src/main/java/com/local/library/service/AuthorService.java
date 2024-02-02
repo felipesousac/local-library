@@ -8,7 +8,9 @@ import com.local.library.model.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @Service
@@ -25,5 +27,14 @@ public class AuthorService {
         List<Book> books = bookRepository.findBooksByAuthorId(author.getId());
 
         return ResponseEntity.ok(new AuthorDetail(author, books));
+    }
+
+    public ResponseEntity createAuthor(Author data, UriComponentsBuilder uriBuilder) {
+        Author author = new Author(data);
+        authorRepository.save(author);
+
+        URI uri = uriBuilder.path("/catalog/authors/detail/{id}").buildAndExpand(author.getId()).toUri();
+
+        return ResponseEntity.created(uri).body(author);
     }
 }
