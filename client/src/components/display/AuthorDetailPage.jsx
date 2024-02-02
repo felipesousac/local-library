@@ -50,7 +50,7 @@ const AuthorDetailPage = () => {
                 })}
               </>
             ) : (
-              <div className="text-red-500 font-semibold">
+              <div className="text-red-500 font-semibold ml-5 mt-2">
                 This author has no books in this library.
               </div>
             )}
