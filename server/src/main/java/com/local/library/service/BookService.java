@@ -12,7 +12,9 @@ import com.local.library.model.Genre;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,5 +41,14 @@ public class BookService {
         List<BookInstance> bookInstances = bookInstanceRepository.findAllByBookId(id);
 
         return ResponseEntity.ok(new BookDetail(book, author, genre, bookInstances));
+    }
+
+    public ResponseEntity createBook(Book data, UriComponentsBuilder uriBuilder) {
+        Book book = new Book(data);
+        bookRepository.save(book);
+
+        URI uri = uriBuilder.path("/catalog/books/detail/{id}").buildAndExpand(book.getId()).toUri();
+
+        return ResponseEntity.created(uri).body(book);
     }
 }

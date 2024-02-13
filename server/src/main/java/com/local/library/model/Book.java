@@ -32,5 +32,14 @@ public class Book {
     @NotBlank
     private String isbn;
 
+    @NotNull
     private Long genreid;
+
+    public Book(Book book) {
+        this.title = book.getTitle().trim();
+        this.authorid = book.getAuthorid();
+        this.summary = book.getSummary().trim();
+        this.isbn = book.getIsbn();
+        this.genreid = book.getGenreid();
+    }
 }
