@@ -1,5 +1,6 @@
 package com.local.library.service;
 
+
 import com.local.library.domain.AuthorRepository;
 import com.local.library.domain.BookRepository;
 import com.local.library.dto.AuthorDetail;
@@ -10,17 +11,22 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponentsBuilder;
 
+
 import java.net.URI;
 import java.util.List;
+
 
 @Service
 public class AuthorService {
 
+
     @Autowired
     private AuthorRepository authorRepository;
 
+
     @Autowired
     private BookRepository bookRepository;
+
 
     public ResponseEntity<AuthorDetail> authorDetailData(Long id) {
         Author author = authorRepository.getReferenceById(id);
@@ -29,6 +35,7 @@ public class AuthorService {
         return ResponseEntity.ok(new AuthorDetail(author, books));
     }
 
+
     public ResponseEntity createAuthor(Author data, UriComponentsBuilder uriBuilder) {
         Author author = new Author(data);
         authorRepository.save(author);
@@ -36,5 +43,14 @@ public class AuthorService {
         URI uri = uriBuilder.path("/catalog/authors/detail/{id}").buildAndExpand(author.getId()).toUri();
 
         return ResponseEntity.created(uri).body(author);
+    }
+
+
+    public ResponseEntity deleteAuthorById(Long id) {
+        Author author = authorRepository.getReferenceById(id);
+        authorRepository.delete(author);
+        //authorRepository.deleteById(id);
+
+        return ResponseEntity.noContent().build();
     }
 }
