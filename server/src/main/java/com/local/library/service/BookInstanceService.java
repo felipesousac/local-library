@@ -8,6 +8,9 @@ import com.local.library.model.BookInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.util.UriComponentsBuilder;
+
+import java.net.URI;
 
 @Service
 public class BookInstanceService {
@@ -23,5 +26,14 @@ public class BookInstanceService {
         Book book = bookRepository.getReferenceById(bookInstance.getBookid());
 
         return ResponseEntity.ok(new BookInstanceDetail(bookInstance, book));
+    }
+
+    public ResponseEntity createBookInstance(BookInstance data, UriComponentsBuilder uriBuilder) {
+        BookInstance bookInstance = new BookInstance(data);
+        bookInstanceRepository.save(bookInstance);
+
+        URI uri = uriBuilder.path("catalog/bookinstances/detail/{id}").buildAndExpand(bookInstance.getId()).toUri();
+
+        return ResponseEntity.created(uri).body(bookInstance);
     }
 }

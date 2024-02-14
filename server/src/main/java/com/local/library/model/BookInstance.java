@@ -30,4 +30,14 @@ public class BookInstance {
     private Status status;
 
     private LocalDate dueback;
+
+    public BookInstance(BookInstance data) {
+        this.bookid = data.getBookid();
+        this.imprint = data.getImprint();
+        this.status = data.getStatus();
+
+        if (data.getDueback() != null) {
+            this.dueback = data.getDueback();
+        }
+    }
 }

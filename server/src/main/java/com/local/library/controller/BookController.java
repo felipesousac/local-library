@@ -28,6 +28,11 @@ public class BookController {
         return ResponseEntity.ok(bookRepository.findBookAndAuthorById());
     }
 
+    @GetMapping("/list")
+    private ResponseEntity allBooks() {
+        return ResponseEntity.ok(bookRepository.findAll());
+    }
+
     @GetMapping("/{id}")
     private ResponseEntity bookDetail(@PathVariable Long id) {
         return ResponseEntity.ok(bookService.bookDetailData(id));
