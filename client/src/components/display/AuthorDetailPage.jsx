@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { toast } from "sonner";
 
 const AuthorDetailPage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -17,6 +18,7 @@ const AuthorDetailPage = () => {
         navigate(`/catalog/authors`);
       })
       .catch((error) => {
+        toast.error("To delete author, first delete it's books");
         console.error(error);
       });
   }
