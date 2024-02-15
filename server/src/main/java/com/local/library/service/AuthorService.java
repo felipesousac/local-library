@@ -4,6 +4,7 @@ package com.local.library.service;
 import com.local.library.domain.AuthorRepository;
 import com.local.library.domain.BookRepository;
 import com.local.library.dto.AuthorDetail;
+import com.local.library.infra.exception.AuthorHasBooksException;
 import com.local.library.model.Author;
 import com.local.library.model.Book;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,10 +47,15 @@ public class AuthorService {
     }
 
 
-    public ResponseEntity deleteAuthorById(Long id) {
+    public ResponseEntity deleteAuthorById(Long id) throws AuthorHasBooksException {
+        List<Book> books = bookRepository.findAllByAuthorid(id);
         Author author = authorRepository.getReferenceById(id);
+
+        if (!books.isEmpty()) {
+            throw new AuthorHasBooksException("The author '" + author.getFirstname() + " " + author.getLastname() + "' has books in this library", author.getId());
+        }
+
         authorRepository.delete(author);
-        //authorRepository.deleteById(id);
 
         return ResponseEntity.noContent().build();
     }

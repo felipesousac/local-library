@@ -3,6 +3,7 @@ package com.local.library.controller;
 
 import com.local.library.domain.AuthorRepository;
 import com.local.library.dto.AuthorDetail;
+import com.local.library.infra.exception.AuthorHasBooksException;
 import com.local.library.model.Author;
 import com.local.library.service.AuthorService;
 import jakarta.validation.Valid;
@@ -55,7 +56,7 @@ public class AuthorController {
 
     @DeleteMapping("/{id}/delete")
     @Transactional
-    public ResponseEntity deleteAuthor(@PathVariable Long id) {
+    public ResponseEntity deleteAuthor(@PathVariable Long id) throws AuthorHasBooksException {
         return authorService.deleteAuthorById(id);
     }
 }

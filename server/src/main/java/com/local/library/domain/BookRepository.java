@@ -4,6 +4,7 @@ import com.local.library.model.Book;
 import com.local.library.model.BookInstance;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -17,4 +18,6 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     @Query("select a from Book a where a.authorid = :id")
     List<Book> findBooksByAuthorId(Long id);
+
+    List<Book> findAllByAuthorid(Long id);
 }
