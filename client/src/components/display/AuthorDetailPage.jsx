@@ -19,7 +19,7 @@ const AuthorDetailPage = () => {
       })
       .catch((error) => {
         toast.error("To delete author, first delete it's books");
-        console.error(error.response.data);
+        console.error(error);
       });
   }
 
@@ -51,7 +51,7 @@ const AuthorDetailPage = () => {
               <>
                 {author.books.map((book) => {
                   return (
-                    <div key={book.id} className="ml-5">
+                    <div key={book._id} className="ml-5">
                       <p className="pt-5">
                         <Link
                           to={`/catalog/books/${book.id}`}
