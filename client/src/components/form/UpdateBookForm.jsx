@@ -49,8 +49,8 @@ const UpdateBookForm = () => {
     };
 
     await axios
-      .post(
-        "http://localhost:8080/catalog/books",
+      .put(
+        `http://localhost:8080/catalog/books/${id}/update`,
         {
           title,
           summary,
@@ -120,7 +120,6 @@ const UpdateBookForm = () => {
               onChange: (e) => {
                 setSummary(e.target.value);
               },
-              required: { value: true, message: "Summary is required" },
               maxLength: {
                 value: 500,
                 message: "Summary must be less than 500 characters",
@@ -137,7 +136,6 @@ const UpdateBookForm = () => {
               onChange: (e) => {
                 setIsbn(e.target.value);
               },
-              required: { value: true, message: "ISBN is required" },
               maxLength: {
                 value: 150,
                 message: "Isbn must be less than 150 characters",
