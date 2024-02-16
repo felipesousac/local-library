@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 
 const handleStatus = (status) => {
   switch (status) {
@@ -19,6 +19,7 @@ const BookDetailPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [book, setBook] = useState([]);
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get(`http://localhost:8080/catalog/books/${id}`).then((response) => {
@@ -28,7 +29,7 @@ const BookDetailPage = () => {
   }, []);
 
   return (
-    <>
+    <div className="flex flex-col">
       {isLoading ? (
         <div className="pl-2">Loading...</div>
       ) : (
@@ -91,7 +92,13 @@ const BookDetailPage = () => {
           </div>
         </>
       )}
-    </>
+      <button
+        onClick={() => navigate(`/catalog/books/${id}/update`)}
+        className="ml-5 mt-4 bg-blue-500 transition-colors hover:bg-blue-600 text-white py-2 px-4 rounded max-w-max"
+      >
+        Update Book
+      </button>
+    </div>
   );
 };
 

@@ -12,6 +12,7 @@ import BookInstanceDetailPage from "./components/display/BookInstanceDetailPage"
 import GenreForm from "./components/form/GenreForm";
 import AuthorForm from "./components/form/AuthorForm";
 import BookForm from "./components/form/BookForm";
+import UpdateBook from "./components/form/UpdateBook";
 import { BookInstanceForm } from "./components/form/BookInstanceForm";
 
 const Router = () => {
@@ -71,6 +72,10 @@ const Router = () => {
         {
           path: "/catalog/bookinstances/create",
           element: <BookInstanceForm />,
+        },
+        {
+          path: "catalog/books/:id/update",
+          element: <UpdateBook />,
         },
       ],
     },

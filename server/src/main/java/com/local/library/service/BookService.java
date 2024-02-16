@@ -5,6 +5,7 @@ import com.local.library.domain.BookInstanceRepository;
 import com.local.library.domain.BookRepository;
 import com.local.library.domain.GenreRepository;
 import com.local.library.dto.BookDetail;
+import com.local.library.dto.BookUpdateData;
 import com.local.library.model.Author;
 import com.local.library.model.Book;
 import com.local.library.model.BookInstance;
@@ -50,5 +51,12 @@ public class BookService {
         URI uri = uriBuilder.path("/catalog/books/detail/{id}").buildAndExpand(book.getId()).toUri();
 
         return ResponseEntity.created(uri).body(book);
+    }
+
+    public ResponseEntity updateBook(BookUpdateData data, Long id) {
+        Book book = bookRepository.getReferenceById(id);
+        book.updateData(data);
+
+        return ResponseEntity.ok(book);
     }
 }
